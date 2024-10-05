@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CreateTaskForm from "./components/CreateTaskForm";
 
 interface Task {
   id: number;
@@ -13,7 +14,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch("http://localhost:3000/api/task/all");
+        const data = await fetch("http://localhost:3000/api/task/list");
         const response = await data.json();
         return response;
       } catch (error) {
@@ -46,6 +47,7 @@ function App() {
               );
             })}
         </ul>
+        <CreateTaskForm />
       </div>
     </div>
   );
